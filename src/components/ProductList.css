@@ -1,0 +1,80 @@
+.product-list {
+    padding: 20px;
+    background-color: #f9fafb;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .controls {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 25px;
+  }
+  
+  .controls input,
+  .controls select {
+    padding: 10px 14px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+    width: 220px;
+    transition: border-color 0.3s ease;
+  }
+  
+  .controls input:focus,
+  .controls select:focus {
+    outline: none;
+    border-color: #4f46e5; /* Indigo focus */
+    box-shadow: 0 0 5px rgba(79, 70, 229, 0.5);
+  }
+  
+  .products {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 24px;
+    justify-items: center;
+  }
+  
+  .pagination {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  .pagination button {
+    padding: 8px 16px;
+    background-color: #4f46e5;
+    border: none;
+    border-radius: 6px;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .pagination button:disabled {
+    background-color: #a5b4fc;
+    cursor: not-allowed;
+  }
+  
+  .pagination button:not(:disabled):hover {
+    background-color: #3730a3;
+  }
+  
+  .pagination span {
+    font-weight: 600;
+    color: #374151;
+  }
+  
+  p {
+    text-align: center;
+    color: #6b7280;
+    font-style: italic;
+    font-size: 1.1rem;
+  }
+  
