@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/laptop-store/static/css/main.b802d0d1.css",
+    "main.js": "/laptop-store/static/js/main.c4fe2f1e.js",
+    "static/js/453.4c6d6b12.chunk.js": "/laptop-store/static/js/453.4c6d6b12.chunk.js",
+    "index.html": "/laptop-store/index.html",
+    "main.b802d0d1.css.map": "/laptop-store/static/css/main.b802d0d1.css.map",
+    "main.c4fe2f1e.js.map": "/laptop-store/static/js/main.c4fe2f1e.js.map",
+    "453.4c6d6b12.chunk.js.map": "/laptop-store/static/js/453.4c6d6b12.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.b802d0d1.css",
+    "static/js/main.c4fe2f1e.js"
+  ]
+}
