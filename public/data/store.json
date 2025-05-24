@@ -40,6 +40,16 @@
       "price": 1999.0,
       "note": "Great high level Gaming",
       "category": "Gaming"
+    },
+    {
+      "id": 5,
+      "title": "Dell",
+      "description": "Best for office work",
+      "specification": "15.6 Display, GTX 1650, 8GB RAM, 512GB SSD",
+      "image": "/images/Dell.jpeg",
+      "price": 799.0,
+      "note": "Best suited for office work",
+      "category": "Business"
     }
   ]
 }
