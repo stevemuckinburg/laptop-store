@@ -50,6 +50,16 @@
       "price": 1999.0,
       "note": "Great high level Gaming",
       "category": "Apple MacBook Air M2.jpeg"
+    },
+    {
+      "id": 6,
+      "title": "HP 11",
+      "description": "Highly preferable Gaming laptop",
+      "specification": "15.6\\\" Display, GTX 1650, 8GB RAM, 512GB SSD",
+      "image": "/images/Apple MacBook Air M2.jpeg",
+      "price": 1990.0,
+      "note": "Great high level Gaming",
+      "category": "Gaming"
     }
   ]
 }
