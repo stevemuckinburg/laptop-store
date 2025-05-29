@@ -60,6 +60,16 @@
       "price": 5000.0,
       "note": "Best For Daily Task",
       "category": "Budget"
+    },
+    {
+      "id": 7,
+      "title": "Optiplex 990",
+      "description": "A high end core i5 computer",
+      "specification": "core-i5, 8GB RAM, 500GB HHD, 2GB Graphic",
+      "image": "/images/1.jpeg",
+      "price": 5000.0,
+      "note": "Best For Daily Task",
+      "category": "Budget"
     }
   ]
 }
