@@ -10,10 +10,6 @@ const ProductList = () => {
   const [filtered, setFiltered] = useState([]);
   const [category, setCategory] = useState('All');
   const [search, setSearch] = useState('');
-  const [sortOption, setSortOption] = useState('');
-  const [currentPage, setCurrentPage] = useState(1);
-
-  const itemsPerPage = 4;
 
   // Fetch store data (name + products)
   useEffect(() => {
@@ -35,44 +31,18 @@ const ProductList = () => {
       });
   }, []);
 
-  // Filter, sort, and reset pagination when dependencies change
+  // Filter whenever category, search, or products change
   useEffect(() => {
-    let data = products.filter(p => {
+    const data = products.filter(p => {
       const matchCategory = category === 'All' || p.category === category;
       const matchSearch = p.title.toLowerCase().includes(search.toLowerCase());
       return matchCategory && matchSearch;
     });
-
-    if (sortOption === 'price-asc') {
-      data.sort((a, b) => a.price - b.price);
-    } else if (sortOption === 'price-desc') {
-      data.sort((a, b) => b.price - a.price);
-    } else if (sortOption === 'name-asc') {
-      data.sort((a, b) => a.title.localeCompare(b.title));
-    } else if (sortOption === 'name-desc') {
-      data.sort((a, b) => b.title.localeCompare(a.title));
-    }
-
     setFiltered(data);
-    setCurrentPage(1);
-  }, [category, search, products, sortOption]);
+  }, [category, search, products]);
 
   // Categories dropdown
   const categories = ['All', ...new Set(products.map(p => p.category))];
-
-  // Pagination logic
-  const indexOfLast = currentPage * itemsPerPage;
-  const indexOfFirst = indexOfLast - itemsPerPage;
-  const currentItems = filtered.slice(indexOfFirst, indexOfLast);
-  const totalPages = Math.ceil(filtered.length / itemsPerPage);
-
-  const paginate = direction => {
-    setCurrentPage(prev =>
-      direction === 'next'
-        ? Math.min(prev + 1, totalPages)
-        : Math.max(prev - 1, 1)
-    );
-  };
 
   return (
     <div className="product-list">
@@ -93,39 +63,18 @@ const ProductList = () => {
             <option key={cat} value={cat}>{cat}</option>
           ))}
         </select>
-
-        <select value={sortOption} onChange={e => setSortOption(e.target.value)}>
-          <option value="">Sort By</option>
-          <option value="price-asc">Price: Low to High</option>
-          <option value="price-desc">Price: High to Low</option>
-          <option value="name-asc">Name: A to Z</option>
-          <option value="name-desc">Name: Z to A</option>
-        </select>
       </div>
 
       {/* Product Grid */}
       <div className="products">
-        {currentItems.length === 0 ? (
+        {filtered.length === 0 ? (
           <p>No matching products.</p>
         ) : (
-          currentItems.map(product => (
+          filtered.map(product => (
             <ProductCard key={product.id} product={product} />
           ))
         )}
       </div>
-
-      {/* Pagination */}
-      {totalPages > 1 && (
-        <div className="pagination">
-          <button onClick={() => paginate('prev')} disabled={currentPage === 1}>
-            Previous
-          </button>
-          <span>Page {currentPage} of {totalPages}</span>
-          <button onClick={() => paginate('next')} disabled={currentPage === totalPages}>
-            Next
-          </button>
-        </div>
-      )}
     </div>
   );
 };

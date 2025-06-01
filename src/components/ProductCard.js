@@ -1,18 +1,23 @@
 // src/components/ProductCard.js
 import React from 'react';
-import './ProductCard.css';
+import Slider from './Slider';
+import './ProductCard.css'; // still needed for card, hover, etc.
 
 const ProductCard = ({ product }) => {
-  // Build your img URL relative to the public folder:
-  const imgSrc = `${process.env.PUBLIC_URL}${product.image}`;
+  // Normalize `product.image` into an array
+  const images = Array.isArray(product.image)
+    ? product.image
+    : [product.image];
 
   return (
     <div className="product-card">
-      <img
-        src={imgSrc}
-        alt={product.title}
-        className="product-img"
-      />
+      {/* Use Slider for images */}
+      <div className="product-img-container">
+        <Slider images={images} altText={product.title} />
+      </div>
+
+      <span className="category-tag">{product.category}</span>
+
       <h3>{product.title}</h3>
       <p className="description">{product.description}</p>
       <p><strong>Specs:</strong> {product.specification}</p>

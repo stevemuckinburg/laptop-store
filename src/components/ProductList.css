@@ -1,80 +1,272 @@
+/* ───────────────────────────────────────────────────────────────────────── */
+/*  ProductList.css                                                          */
+/* ───────────────────────────────────────────────────────────────────────── */
+
+:root {
+  /* Colors */
+  /* ------------------------------- */
+  --bg-overlay: rgba(25, 25, 112, 0.7);
+  --bg-input: rgba(40, 40, 40, 0.8);
+  --bg-no-products: rgba(40, 40, 40, 0.5);
+  --text-light: #f0f0f0;
+  --text-muted: #bbb;
+  --text-placeholder: #999;
+  --accent-1: #6b73ff;
+  --accent-2: #00d4ff;
+  --border-dark: #444;
+  --shadow-color: rgba(0, 0, 0, 0.5);
+
+  /* Sizing */
+  /* ------------------------------- */
+  --spacing-sm: 10px;
+  --spacing-md: 20px;
+  --spacing-lg: 30px;
+  --spacing-xl: 40px;
+  --border-radius: 10px;
+
+  /* Typography */
+  /* ------------------------------- */
+  --font-base: 1rem;
+  --font-lg: 1.1rem;
+  --font-xl: 1.3rem;
+  --font-xxl: 2.5rem;
+
+  /* Transitions */
+  /* ------------------------------- */
+  --transition-fast: 0.2s ease;
+  --transition-med: 0.3s ease;
+  --transition-long: 0.4s ease;
+}
+
+/* ---------- Global Reset & Box-Sizing ---------- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ---------- Product List Container ---------- */
 .product-list {
-    padding: 20px;
-    background-color: #f9fafb;
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-  
-  .controls {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 15px;
-    margin-bottom: 25px;
-  }
-  
+  padding: var(--spacing-lg);
+  background: var(--bg-overlay);
+  backdrop-filter: blur(10px);
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  border: none;
+  box-shadow: none;
+  border-radius: 0;
+}
+
+/* ---------- Store Title ---------- */
+.store-title {
+  font-size: var(--font-xxl);
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  margin: var(--spacing-md) 0 var(--spacing-xl) 0;
+  display: inline-block;
+  padding-bottom: var(--spacing-sm);
+  background: linear-gradient(90deg, var(--accent-1) 0%, var(--accent-2) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 2px 8px var(--shadow-color);
+}
+
+/* ---------- Controls Container ---------- */
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--spacing-lg);
+  margin-bottom: var(--spacing-xl);
+}
+
+/* Shared styles for inputs & selects */
+.controls input,
+.controls select {
+  padding: 0.875rem 1.125rem; /* 14px 18px */
+  width: 260px;
+  font-size: var(--font-lg);
+  border-radius: var(--border-radius);
+  border: 1px solid var(--border-dark);
+  background: var(--bg-input);
+  color: var(--text-light);
+  box-shadow: inset 0 2px 6px var(--shadow-color);
+  transition: all var(--transition-med);
+}
+
+.controls input::placeholder {
+  color: var(--text-placeholder);
+}
+
+.controls input:focus,
+.controls select:focus {
+  outline: none;
+  border-color: var(--accent-1);
+  box-shadow:
+    0 0 0 3px rgba(107, 115, 255, 0.3),
+    inset 0 2px 6px var(--shadow-color);
+}
+
+/* Custom arrow for select */
+.controls select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%236b73ff'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 18px;
+  padding-right: 3rem;
+}
+
+/* ---------- Hover Effects for Inputs & Selects ---------- */
+.controls input:hover,
+.controls select:hover {
+  background: rgba(60, 60, 60, 0.9);
+  border-color: var(--accent-1);
+  box-shadow:
+    0 2px 4px rgba(0, 0, 0, 0.4),
+    inset 0 2px 6px var(--shadow-color);
+}
+
+/* ---------- Products Grid ---------- */
+.products {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 32px;
+  justify-items: center;
+  flex-grow: 1;
+}
+
+/* ---------- Pagination ---------- */
+.pagination {
+  margin-top: var(--spacing-xl);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 25px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  padding: var(--spacing-md) 0;
+}
+
+.pagination button {
+  padding: 0.75rem 1.5rem;
+  background: linear-gradient(90deg, var(--accent-1) 0%, var(--accent-2) 100%);
+  border: none;
+  border-radius: var(--border-radius);
+  color: white;
+  font-weight: 700;
+  font-size: var(--font-lg);
+  cursor: pointer;
+  transition: all var(--transition-med);
+  box-shadow: 0 6px 15px rgba(107, 115, 255, 0.4);
+}
+
+.pagination button:disabled {
+  background: #444;
+  color: #777;
+  box-shadow: none;
+  cursor: not-allowed;
+}
+
+.pagination button:not(:disabled):hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(107, 115, 255, 0.6);
+}
+
+.pagination span {
+  font-weight: 700;
+  color: #ddd;
+  font-size: 1.2rem;
+  min-width: 150px;
+}
+
+/* ---------- No-Products Message ---------- */
+.no-products {
+  grid-column: 1 / -1;
+  width: 100%;
+  margin: var(--spacing-xl) 0;
+  padding: 60px;
+  background: var(--bg-no-products);
+  border-radius: 16px;
+  text-align: center;
+  font-size: var(--font-xl);
+  font-style: italic;
+  color: var(--text-muted);
+}
+
+/* ───────────────────────────────────────────────────────────────────────── */
+/*  Responsive Adjustments                                                    */
+/* ───────────────────────────────────────────────────────────────────────── */
+
+/* Default tablet breakpoint */
+@media (max-width: 768px) {
   .controls input,
   .controls select {
-    padding: 10px 14px;
-    border-radius: 6px;
-    border: 1px solid #ccc;
-    font-size: 1rem;
-    width: 220px;
-    transition: border-color 0.3s ease;
+    width: 100%;
+    max-width: 320px;
   }
-  
-  .controls input:focus,
-  .controls select:focus {
-    outline: none;
-    border-color: #4f46e5; /* Indigo focus */
-    box-shadow: 0 0 5px rgba(79, 70, 229, 0.5);
+
+  .product-list {
+    padding: var(--spacing-md);
   }
-  
-  .products {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-    gap: 24px;
-    justify-items: center;
+
+  .store-title {
+    font-size: 2rem;
   }
-  
-  .pagination {
-    margin-top: 30px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 15px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Mobile-specific: place search and filter side-by-side, smaller & attractive */
+@media (max-width: 480px) {
+  .store-title {
+    font-size: 1.75rem;
+    margin: var(--spacing-md) 0 var(--spacing-md) 0;
   }
-  
+
   .pagination button {
-    padding: 8px 16px;
-    background-color: #4f46e5;
-    border: none;
-    border-radius: 6px;
-    color: white;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
   }
-  
-  .pagination button:disabled {
-    background-color: #a5b4fc;
-    cursor: not-allowed;
-  }
-  
-  .pagination button:not(:disabled):hover {
-    background-color: #3730a3;
-  }
-  
+
   .pagination span {
-    font-weight: 600;
-    color: #374151;
+    font-size: 1rem;
+    min-width: 120px;
   }
-  
-  p {
-    text-align: center;
-    color: #6b7280;
-    font-style: italic;
-    font-size: 1.1rem;
+
+  /* Controls row: input + select side-by-side */
+  .controls {
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-md);
   }
-  
+
+  .controls input,
+  .controls select {
+    width: 48%;
+    padding: 0.75rem 1rem; /* slightly smaller */
+    font-size: 1rem;
+    border-radius: var(--border-radius);
+    background: rgba(50, 50, 80, 0.85);
+    color: var(--text-light);
+    box-shadow: inset 0 2px 4px var(--shadow-color);
+    transition: all var(--transition-fast);
+  }
+
+  .controls input:hover,
+  .controls select:hover {
+    background: rgba(70, 70, 120, 0.95);
+    border-color: var(--accent-2);
+    box-shadow:
+      0 2px 4px rgba(0, 0, 0, 0.4),
+      inset 0 2px 4px var(--shadow-color);
+  }
+
+  /* Make select’s arrow slightly smaller on mobile */
+  .controls select {
+    background-position: right 0.75rem center;
+    background-size: 14px;
+    padding-right: 2.5rem;
+  }
+}

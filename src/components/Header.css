@@ -1,0 +1,85 @@
+/* Header.css */
+
+:root {
+  --header-bg: rgba(25, 25, 112, 0.85);             /* Midnight blue */
+  --header-lg-gradient-start: #6b73ff;              /* Blue accent */
+  --header-lg-gradient-end: #00d4ff;                /* Cyan accent */
+  --header-shadow: rgba(0, 0, 0, 0.2);
+  --header-text: white;
+  --transition-fast: 0.2s ease;
+}
+
+/* Header container */
+.header {
+  position: relative;
+  background: var(--header-bg);
+  backdrop-filter: saturate(150%) blur(10px);
+  padding: 1.5rem 0;
+  box-shadow: 0 4px 20px var(--header-shadow);
+  overflow: hidden;
+  text-align: center;
+}
+
+/* Animated gradient overlay */
+.header::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -50%;
+  width: 200%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    rgba(107, 115, 255, 0.25),
+    rgba(0, 212, 255, 0.25),
+    rgba(107, 115, 255, 0.25)
+  );
+  animation: shimmer 6s infinite linear;
+  mix-blend-mode: screen;
+  z-index: 0;
+}
+
+@keyframes shimmer {
+  0%   { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+/* Header title */
+.header h1 {
+  position: relative;
+  z-index: 1;
+  font-size: 2.5rem;
+  margin: 0;
+  background: linear-gradient(
+    90deg,
+    var(--header-lg-gradient-start) 0%,
+    var(--header-lg-gradient-end) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-weight: 800;
+  letter-spacing: -1px;
+  text-shadow: 0 2px 12px var(--header-shadow);
+  transition: text-shadow var(--transition-fast);
+}
+
+.header h1:hover {
+  text-shadow: 0 4px 20px rgba(0, 212, 255, 0.6);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .header {
+    padding: 1rem 0;
+  }
+  .header h1 {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .header h1 {
+    font-size: 1.75rem;
+  }
+}

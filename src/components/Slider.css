@@ -1,0 +1,293 @@
+/* ─── Variables ──────────────────────────────────────────── */
+:root {
+  --slider-accent: #6b73ff;
+  --slider-accent-secondary: #00d4ff;
+  --slider-overlay: rgba(0, 0, 0, 0.3);
+  --slider-control-bg: rgba(30, 30, 30, 0.85);
+  --thumb-border: 2px solid rgba(255, 255, 255, 0.5);
+  --thumb-active-border: 2px solid var(--slider-accent-secondary);
+}
+
+/* ─── Slider Container & Image ────────────────────────────── */
+.slider-container {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+  box-shadow: 
+    0 6px 15px rgba(0, 0, 0, 0.3),
+    0 0 0 1px rgba(255, 255, 255, 0.05);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+}
+
+.slider-container:hover {
+  box-shadow: 
+    0 8px 25px rgba(0, 0, 0, 0.4),
+    0 0 0 1px rgba(107, 115, 255, 0.3);
+}
+
+.slider-image-wrapper {
+  position: relative;
+  overflow: hidden;
+  height: 240px;
+  border-radius: 12px;
+  cursor: zoom-in; /* indicates clickable */
+}
+
+.slider-image-wrapper .product-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+/* Image hover effect */
+.slider-container:hover .product-img {
+  transform: scale(1.08);
+}
+
+/* Gradient overlay (optional) */
+.image-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 40%;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+  z-index: 1;
+}
+
+/* ─── Arrow Buttons ───────────────────────────────────────── */
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%) scale(1);
+  z-index: 3;
+  background: var(--slider-control-bg);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #fff;
+  font-size: 1.5rem;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  opacity: 0.8;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.arrow:hover {
+  opacity: 1;
+  background: rgba(40, 40, 40, 0.95);
+  transform: translateY(-50%) scale(1.1);
+  box-shadow: 0 0 15px rgba(107, 115, 255, 0.5);
+  color: var(--slider-accent-secondary);
+}
+
+.arrow:active {
+  transform: translateY(-50%) scale(0.95);
+}
+
+.left-arrow {
+  left: 15px;
+}
+
+.right-arrow {
+  right: 15px;
+}
+
+/* ─── Dots Indicator ─────────────────────────────────────── */
+.dots {
+  position: absolute;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  z-index: 3;
+  padding: 6px 10px;
+  background: rgba(30, 30, 30, 0.4);
+  border-radius: 20px;
+  backdrop-filter: blur(5px);
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.dot::before {
+  content: '';
+  position: absolute;
+  top: -3px;
+  left: -3px;
+  right: -3px;
+  bottom: -3px;
+  border-radius: 50%;
+  border: 1px solid transparent;
+  transition: inherit;
+}
+
+.dot:hover {
+  background: rgba(255, 255, 255, 0.8);
+  transform: scale(1.2);
+}
+
+.dot.active {
+  background: var(--slider-accent-secondary);
+  transform: scale(1.2);
+  box-shadow: 0 0 10px rgba(0, 212, 255, 0.6);
+}
+
+.dot.active::before {
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+/* ─── Image Counter ───────────────────────────────────────── */
+.image-counter {
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+  z-index: 3;
+  background: var(--slider-control-bg);
+  color: white;
+  font-size: 0.8rem;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-weight: 500;
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* ─── Modal / Lightbox ────────────────────────────────────── */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.modal-content {
+  position: relative;
+  max-width: 90%;
+  max-height: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Close (×) button */
+.modal-close {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  background: var(--slider-control-bg);
+  color: #fff;
+  border: none;
+  font-size: 2rem;
+  line-height: 1;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background 0.2s ease;
+  z-index: 1001;
+}
+
+.modal-close:hover {
+  background: rgba(50, 50, 50, 0.95);
+}
+
+/* Zoomed/Fullscreen Image */
+.modal-image {
+  /* On small screens: take 90% of viewport width */
+  width: 90vw;
+  max-height: 80vh;
+  object-fit: contain;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  transition: all 0.3s ease;
+}
+
+/* On larger screens: take 60% of viewport width */
+@media (min-width: 769px) {
+  .modal-image {
+    width: 60vw;
+    max-height: 80vh;
+  }
+}
+
+/* Thumbnail strip below the modal image */
+.thumbnails {
+  margin-top: 1rem;
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding-bottom: 10px;
+  width: 100%;
+  justify-content: center;
+}
+
+.thumb {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border: var(--thumb-border);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: transform 0.2s ease, border 0.2s ease;
+}
+
+.thumb:hover {
+  transform: scale(1.05);
+}
+
+.thumb.active {
+  border: var(--thumb-active-border);
+  box-shadow: 0 0 10px rgba(0, 212, 255, 0.7);
+}
+
+/* ─── Responsive Adjustments ─────────────────────────────────── */
+@media (max-width: 768px) {
+  .slider-image-wrapper {
+    height: 180px;
+  }
+  .arrow {
+    width: 36px;
+    height: 36px;
+    font-size: 1.2rem;
+  }
+  .dots {
+    bottom: 10px;
+  }
+}
+
+@media (hover: none) {
+  /* Disable hover animations on touch devices */
+  .slider-container:hover {
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3),
+                0 0 0 1px rgba(255, 255, 255, 0.05);
+  }
+  .slider-container:hover .product-img {
+    transform: none;
+  }
+  .slider-container:hover .arrow {
+    transform: translateY(-50%) scale(1);
+    opacity: 0.8;
+  }
+}
