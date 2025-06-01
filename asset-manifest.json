@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/laptop-store/static/css/main.b802d0d1.css",
-    "main.js": "/laptop-store/static/js/main.fa18d068.js",
+    "main.css": "/laptop-store/static/css/main.fddccbf6.css",
+    "main.js": "/laptop-store/static/js/main.cf011c7f.js",
     "static/js/453.4c6d6b12.chunk.js": "/laptop-store/static/js/453.4c6d6b12.chunk.js",
     "index.html": "/laptop-store/index.html",
-    "main.b802d0d1.css.map": "/laptop-store/static/css/main.b802d0d1.css.map",
-    "main.fa18d068.js.map": "/laptop-store/static/js/main.fa18d068.js.map",
+    "main.fddccbf6.css.map": "/laptop-store/static/css/main.fddccbf6.css.map",
+    "main.cf011c7f.js.map": "/laptop-store/static/js/main.cf011c7f.js.map",
     "453.4c6d6b12.chunk.js.map": "/laptop-store/static/js/453.4c6d6b12.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.b802d0d1.css",
-    "static/js/main.fa18d068.js"
+    "static/css/main.fddccbf6.css",
+    "static/js/main.cf011c7f.js"
   ]
 }
