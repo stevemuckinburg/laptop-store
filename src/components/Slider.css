@@ -18,6 +18,7 @@
     0 6px 15px rgba(0, 0, 0, 0.3),
     0 0 0 1px rgba(255, 255, 255, 0.05);
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+  touch-action: pan-x; /* allow horizontal panning */
 }
 
 .slider-container:hover {
@@ -31,7 +32,14 @@
   overflow: hidden;
   height: 240px;
   border-radius: 12px;
-  cursor: zoom-in; /* indicates clickable */
+  cursor: grab; /* indicate draggable */
+  touch-action: pan-x; /* allow horizontal panning */
+}
+
+/* When user presses and drags, disable the transform transition */
+.slider-image-wrapper:active .product-img {
+  transition: none !important;
+  cursor: grabbing;
 }
 
 .slider-image-wrapper .product-img {
@@ -214,14 +222,15 @@
 }
 
 /* Zoomed/Fullscreen Image */
+/* Mobile: 90% of viewport width */
 .modal-image {
-  /* On small screens: take 90% of viewport width */
   width: 90vw;
   max-height: 80vh;
   object-fit: contain;
   border-radius: 8px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
   transition: all 0.3s ease;
+  touch-action: pan-x; /* allow horizontal panning */
 }
 
 /* On larger screens: take 60% of viewport width */
