@@ -6,7 +6,11 @@
       "title": "Dell XPS 13",
       "description": "A high-end compact laptop with Intel Core i7.",
       "specification": "13.4\" FHD+ Display, 16GB RAM, 512GB SSD",
-      "image": "/images/Dell XPS 13.jpeg",
+      "image": [
+        "/images/Dell XPS 13.jpeg",
+        "/images/HP Pavilion 15.jpeg",
+        "/images/Apple MacBook Air M2 (1).jpeg"
+      ],
       "price": 1199,
       "note": "Best for productivity.",
       "category": "Business"
@@ -63,42 +67,12 @@
     },
     {
       "id": 7,
-      "title": "Optiplex 990",
-      "description": "A high end core i5 computer",
-      "specification": "core-i5, 8GB RAM, 500GB HHD, 2GB Graphic",
-      "image": "/images/1.jpeg",
-      "price": 5000.0,
-      "note": "Best For Daily Task",
-      "category": "Budget"
-    },
-    {
-      "id": 8,
-      "title": "Optiplex 990",
-      "description": "A high end core i5 computer",
-      "specification": "core-i5, 8GB RAM, 500GB HHD, 2GB Graphic",
-      "image": "/images/1.jpeg",
-      "price": 5000.0,
-      "note": "Best For Daily Task",
-      "category": "Budget"
-    },
-    {
-      "id": 9,
-      "title": "Optiplex 990",
-      "description": "A high end core i5 computer",
-      "specification": "core-i5, 8GB RAM, 500GB HHD, 2GB Graphic",
-      "image": "/images/1.jpeg",
-      "price": 5000.0,
-      "note": "Best For Daily Task",
-      "category": "Budget"
-    },
-    {
-      "id": 10,
-      "title": "dell 2020",
-      "description": "Core i5, 11 Gen, Best for the Gaming",
-      "specification": "8GB RAM, 2TB SSD VM2, 8GB Gramphics",
-      "image": "/images/2.jpeg",
-      "price": 30000.0,
-      "note": "Best choice for gamin",
+      "title": "Dell Latitude 5401",
+      "description": "New core-i7 Generation 9",
+      "specification": "16GB RAM DDR4, 8GB Graphics, 512GB SSD,",
+      "image": "/images/latitude5401-1.jpeg",
+      "price": 17000.0,
+      "note": "Best For Gaming and Coding",
       "category": "Gaming"
     }
   ]
