@@ -74,6 +74,26 @@
       "price": 17000.0,
       "note": "Best For Gaming and Coding",
       "category": "Gaming"
+    },
+    {
+      "id": 8,
+      "title": "Dell 5401",
+      "description": "Best For coding",
+      "specification": "16GB RAM, 8GB GRAPHICS, 512GB SSD 14INCH DESPLAY",
+      "image": "/images/latitude5401-2.jpeg",
+      "price": 17000.0,
+      "note": "Best For Coding",
+      "category": "Gaming"
+    },
+    {
+      "id": 9,
+      "title": "Dell 5401",
+      "description": "Best For coding",
+      "specification": "16GB RAM, 8GB GRAPHICS, 512GB SSD 14INCH DESPLAY",
+      "image": "/images/latitude5401-2.jpeg",
+      "price": 17000.0,
+      "note": "Best For Coding",
+      "category": "Gaming"
     }
   ]
 }
